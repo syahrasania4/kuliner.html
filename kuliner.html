@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuliner Gen-Z</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #e91e63; 
+            --secondary-color: #f8bbd9;
+            --accent-color: #3498db;
+            --dark-color: #2169b2;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fffdfd;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        section, div[id] {
+            scroll-margin-top: 80px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding: 20px;
+            background-color: #cd597f;
+            
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .beranda {
+            background-image: url(kuliner.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+            padding-top: 30px;
+            
+        }
+        .beranda::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: inherit;
+        }
+        .beranda-content {
+            position: relative;
+            z-index: 1;
+        }
+        .beranda h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        .beranda p {
+            font-size: 1.8em;
+            color: var(--white);
+        }
+        nav {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            border-radius: 8px 8px 0 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 800;
+            transition: var(--transition);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .nav-menu a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        .main-content {
+            margin-top: 80px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .img {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        
+        .table {
+            background-color: bisque;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        .table h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.8em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #0f0e0e;
+        }
+        th {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+       
+        .about {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 3%;
+        }
+        .about h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.8em;
+        }
+        .about p {
+            margin-bottom: 15px;
+        }
+        .form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 1100px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .form h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.8em;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input[type="text"],textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input[type="number"] {
+           width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .menu-z {
+            margin-bottom: 20px;
+        }
+        .menu-z h4 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .menu-z label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        input[type="checkbox"] {
+            margin-right: 20px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            width: 100%;
+        }
+        button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+       
+        .card {
+             background: white;
+             border-radius: 10px;
+              padding: 10px;
+             box-shadow: var(--shadow);
+             transition: transform .3s ease;
+             cursor: pointer;
+        }
+
+        .card:hover {
+             transform: translateY(-5px);
+        }
+
+        .card img {
+             width: 100%;
+             height: 200px;
+             object-fit: cover;
+             border-radius: 8px;
+        }
+
+        .card h3 {
+             margin-top: 10px;
+             font-size: 1.2em;
+             color: var(--primary-color);
+        }
+
+        .card p {
+              font-size: 0.9em;
+             color: var(--text-light);
+             margin-top: 5px;
+        }
+ </style>
+</head>
+
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#menu">Daftar Kuliner</a></li>
+                <li><a href="#pesan">Pesan</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="beranda" id="beranda">
+        <div class="beranda-content">
+            <h2>Selamat Datang di Kuliner Gen-Z</h2>
+            <p>Tempatnya eksplorasi kuliner kekinian untuk anak muda!</p>
+        </div>
+    </div>
+
+    
+        <div class="container main-content">
+        <div class="img" id="galeri">
+
+    <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.-aRLsgMfnw-OwERJDuC-VwHaE8?w=272&h=181&c=7&r=0&o=7&cb=12&dpr=1.1&pid=1.7&rm=3">
+        <h3>Seblak kuah rawit</h3>
+        <p>Seblak dengan berbagai topping pelengkap.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.0PAeTFUpPT5I4Z9lEl7RWwHaE7?w=290&h=193&c=7&r=0&o=7&cb=12&dpr=1.1&pid=1.7&rm=3">
+        <h3>Burger</h3>
+        <p>Burger jumbo gen-z punya dengan daging slice tebal.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.PL4iMh4MUV2kYdsOXU6qJQHaE0?w=281&h=183&c=7&r=0&o=7&cb=12&dpr=1.1&pid=1.7&rm=3">
+        <h3>french fries</h3>
+        <p>Kentang goreng dengan campuran sayur didalamnya.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.ku5xdKqscDthQgK4M4EmFwHaE7?w=272&h=181">
+        <h3>Pizza</h3>
+        <p>Pizza empuk dengan topping mozzarella yang melimpah .</p>
+    </div>
+
+     <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.axZE7u1QD8_rzKfBCcaBcwHaLH?w=185&h=277">
+        <h3>Pasta</h3>
+        <p>Pasta creamy dengan rasa gurih yang ditaburi dengan oregano premium .</p>
+    </div>
+
+    <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.161lfWPPCInf_SXHqzORfAHaFj?w=247&h=185">
+        <h3>Hotdog Sosis</h3>
+        <p> Menggunakan sosis sapi pilihan dengan berbagai saus.</p>
+    </div>
+
+     <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.XFch5wOZTIybGlw5UySjwQHaDw?w=323&h=177">
+        <h3>Dimsum mentai</h3>
+        <p> Dimsum yang dipadukan dengan saus mentai khas jepang.</p>
+    </div>
+
+   <div class="card">
+        <img src="https://th.bing.com/th/id/OIP.3ODdKzjbrLepwtTTcB1IXgHaHa?w=201&h=201">
+        <h3>Steak wagyu A5</h3>
+        <p> daging sapi jepang dengan kualitas tertinggi yang memiliki tekstur super mpuk dan rasa yang kaya.</p>
+    </div>
+    </div>
+    
+   
+        
+        <div class="table" id="menu">
+            <h3>Daftar Kuliner Gen-Z </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>MENU</th>
+                        <th>HARGA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>Seblak kuah rawit</td>
+                        <td>Rp 25.000</td> 
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Burger daging slice</td>
+                        <td>Rp 20.000</td> 
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>French Fries </td>
+                        <td>Rp 18.000</td> 
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Pizza mozzarella</td>
+                        <td>Rp 35.000</td> 
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Pasta creamy</td>
+                        <td>Rp 25.000</td> 
+                    </tr>
+                     <tr>
+                        <td>6.</td>
+                        <td>hotdog sosis</td>
+                        <td>Rp 23.000</td> 
+                    </tr>
+                     <tr>
+                        <td>7.</td>
+                        <td>Dimsum mentai</td>
+                        <td>Rp 36.000</td> 
+                    </tr>
+                     <tr>
+                        <td>8.</td>
+                        <td>Steak Wagyu A5</td>
+                        <td>Rp 50.000</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <div class="form" id="pesan">
+            <h3>Pemesanan Kuliner</h3>
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan Nama Anda" required>
+            
+            <label for="alamat">Alamat:</label> 
+            <textarea id="alamat" name="alamat" placeholder="Masukkan Alamat Anda" required></textarea>
+
+            <label for="Telp">Kontak</label>
+            <input type="number" placeholder=" Masukkan No Telp anda" required><br>
+            
+            <div class="menu-z">
+                <h4>Pilih Menu:</h4>
+                <label>
+                    <input type="checkbox" name="makanan" value="seblak" harga="25000"> Seblak (Rp 25.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="burger" harga="20000"> Burger daging slice (Rp 20.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="frenchfries" harga="18000"> French Fries renyah (Rp 18.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="pizza" harga="35000"> Pizza mozzarella(Rp 35.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="pasta" harga="25000"> Pasta creamy (Rp 25.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="hotdog" harga="23000"> Hotdog Sosis (Rp 23.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="dimsum" harga="36000"> Dimsum Mentai (Rp 36.000)
+                </label><br>
+                <label>
+                    <input type="checkbox" name="makanan" value="steak" harga="50000"> Steak Wagyu A5 (Rp 50.000)
+                </label><br>
+            
+            
+           
+            <button type="submit" id="order" onclick="alert('Terima kasih sudah berbelanja di toko kami !')">Pesan Sekarang</button>
+        </div>
+    </div>
+    
+   
+     <div class="about" id="about">
+            <h3>Tentang Kami</h3>
+            <p>Kuliner Gen-Z adalah website kuliner yang dapat anda pesan dan coba tanpa ribet lagi nih tinggal pesan dan kamu bisa menikmati makanan yang sedang populer.</p>
+            <p>Kami percaya makanan itu bukan cuma buat makan, tapi juga buat eksplorasi rasa dan budaya.</p>
+           <h3>hubungi kami</h3>
+           <p><a href="mailto:syahrasania8@gmail.com">Email: Syahrasania8@gmail.com</a></p>
+           <p><a href="https://www.instagram.com/syahrasania_?igsh=MTEzcDZydWFreTRhOA==" 
+            target="_blank">Instagram</a></p>
+     </div>
+</body>
+</html>
